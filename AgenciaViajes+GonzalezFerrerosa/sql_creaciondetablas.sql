@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS table_transport(
     vehicle VARCHAR (10) NOT NULL,
     bag_space VARCHAR(30) NOT NULL ,#VARCHAR porque puede ser maleta de mano, bodega con su cantidad
     capacity INT NOT NULL,
-    name_transport VARCHAR (30) UNIQUE,
+    name_transport VARCHAR (30),
     PRIMARY KEY (id_transport)
 );
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS travel_plan(
     date_travel DATE NOT NULL,
     destination VARCHAR (120) NOT NULL,
     date_travelback DATE NOT NULL,
-    cost		INT NOT NULL,
+    cost		DOUBLE NOT NULL,
     currency 	VARCHAR (4) NOT NULL,
     Num_people 	 INT,
     id_transport INT,
