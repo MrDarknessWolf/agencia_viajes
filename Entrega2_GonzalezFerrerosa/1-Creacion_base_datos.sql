@@ -61,10 +61,10 @@ CREATE TABLE IF NOT EXISTS travel_plan(
     id_seller	INT,
     id_client	INT,
     PRIMARY KEY (id_reservation),
-    FOREIGN KEY (id_transport) REFERENCES table_transport (id_transport),
-    FOREIGN KEY (id_hotel) REFERENCES table_hotel (id_hotel),
-    FOREIGN KEY (id_food) REFERENCES table_food (id_food),
-    FOREIGN KEY (id_seller) REFERENCES table_seller (id_seller),
-    FOREIGN KEY (id_client) REFERENCES table_client (id_client)
+    FOREIGN KEY (id_transport) REFERENCES table_transport (id_transport) ON DELETE CASCADE,
+    FOREIGN KEY (id_hotel) REFERENCES table_hotel (id_hotel) ON DELETE CASCADE,
+    FOREIGN KEY (id_food) REFERENCES table_food (id_food) ON DELETE CASCADE,
+    FOREIGN KEY (id_seller) REFERENCES table_seller (id_seller) ON DELETE CASCADE,
+    FOREIGN KEY (id_client) REFERENCES table_client (id_client)ON DELETE CASCADE
 );
 
