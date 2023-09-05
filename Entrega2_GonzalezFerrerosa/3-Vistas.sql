@@ -45,4 +45,43 @@ CREATE OR REPLACE VIEW plans_with_included_meals AS #plans with planned meals fo
 
 select *
 from plans_with_included_meals;
+
+CREATE OR REPLACE VIEW travel_lenghts_vw as
+	(select
+		(select count(*) 
+		from travel_plan where abs(date_travelback-date_travel)<7)
+		as less_than_week,
+		(select count(*) 
+		from travel_plan where abs(date_travelback-date_travel)<30)
+		as less_than_month,
+		(select count(*) 
+		from travel_plan where abs(date_travelback-date_travel)>30) 
+		as more_than_month
+    );
     
+CREATE OR REPLACE VIEW travels_in_months_vw as 
+Select
+	(select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-1')
+     AS JAN,
+	(select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-2')
+     AS FEB,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-3')
+     AS MAR,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-4')
+     AS APR,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-5')
+     AS MAY,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-6')
+     AS JUN,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-7')
+     AS JUL,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-8')
+     AS AUG,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-9')
+     AS SEP,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-10')
+     AS OCT,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-11')
+     AS NOV,
+     (select count(*) from travel_plan where date_format(date_travel,'%Y-%m')='2023-12')
+     AS DECEM;
